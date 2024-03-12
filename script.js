@@ -32,6 +32,7 @@ createApp({
         },
       ],
       counter:0,
+      player:true
       
       
 
@@ -54,7 +55,11 @@ createApp({
            }
     },
     autoplay(){
-      setInterval(()=>this.nextPrev(true),3000)
+      setInterval(()=>{
+        if(this.player){
+          this.nextPrev(true)
+        }
+      },3000)
     }
 
   },
