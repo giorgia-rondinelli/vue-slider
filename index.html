@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
     <!-- Custom style -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
     
 
     <title>JS Array Carousel with Objects</title>
@@ -39,57 +39,34 @@
                     <div class="my-carousel-container d-flex flex-column px-5" id="my-carousel">
                         <div class="my-carousel-images">
 
-                            <div class="my-carousel-item active" v-for="image in images">
-                              <img class="img-fluid" :src="image.url">
-                              <div class="item-description px-3">
-                                  <h2>{{image.title}}</h2>
-                                  <p>{{image.description}}</p>
+
+                            <div class="my-carousel-item active" >
+                              <div > 
+                                <img class="img-fluid" :src="images[counter].url">
+                                <div class="item-description px-3">
+                                    <h2>{{images[counter].title}}</h2>
+                                    <p>{{images[counter].description}}</p>
+                                </div>
                               </div> 
                           </div>
-                          <!--
-
-                            <div class="my-carousel-item">
-                                <img class="img-fluid" src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="${images[i].title} picture">
-                                <div class="item-description px-3">
-                                    <h2>Svezia</h2>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.</p>
-                                </div>
-                            </div>
-
-                            <div class="my-carousel-item">
-                                <img class="img-fluid" src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="${images[i].title} picture">
-                                <div class="item-description px-3">
-                                    <h2>Svezia</h2>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.</p>
-                                </div>
-                            </div>
-
-                            <div class="my-carousel-item">
-                                <img class="img-fluid" src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="${images[i].title} picture">
-                                <div class="item-description px-3">
-                                    <h2>Svezia</h2>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.</p>
-                                </div>
-                            </div>
-
-                            <div class="my-carousel-item">
-                                <img class="img-fluid" src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="${images[i].title} picture">
-                                <div class="item-description px-3">
-                                    <h2>Svezia</h2>
-                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.</p>
-                                </div>
-                            </div>-->
 
                         </div> 
                         <div class=" position-relative">
                             <!-- prev -->
-                            <div class="my-previous position-absolute">
+                            <div  @click="nextPrev(true)" class="my-previous position-absolute" >
                                 <span class="my-prev-hook"></span>
                             </div>
-                            <div class="my-thumbnails position-relative">
-                            <!-- <div class="my-thumbnail active">
-                                <img class="img-fluid" src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="Thumbnail of Svezia picture">
-                            </div> -->
+
+
+                            <div class="my-thumbnails position-relative" >
+                            <div
+                              class="my-thumbnail active "
+                              @click="counter= indice"
+                              
+                              v-for="(thumb,indice) in images"
+                              :class="{'active': indice === counter}" >
+                                <img class="img-fluid" :src="thumb.url" alt="Thumbnail of Svezia picture">
+                            </div>
 
                             <!-- <div class="my-thumbnail">
                                 <img class="img-fluid" src="http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg" alt="Thumbnail of Svezia picture">
@@ -109,7 +86,7 @@
 
                             <!-- next -->
                             </div>
-                            <div class="my-next position-absolute">
+                            <div class="my-next position-absolute" @click="nextPrev(false)" >
                                 <span class="my-next-hook"></span>
                             </div>
                         </div>

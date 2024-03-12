@@ -33,10 +33,26 @@ createApp({
       ],
       counter:0,
       
+      
 
     }
   },
   methods:{
+    nextPrev(isNext){
+      if(isNext=true){
+        this.counter++
+      }
+      else{
+        this.counter--
+      }
+
+      if (this.counter===this.images.length){
+        this.counter=0
+      }
+      else if(counter===-1){
+             counter=images.length-1
+           }
+    }
 
   }
 }).mount('#app')
