@@ -52,8 +52,14 @@ createApp({
       else if(counter===-1){
              counter=images.length-1
            }
+    },
+    autoplay(){
+      setInterval(()=>this.nextPrev(true),3000)
     }
 
+  },
+  mounted(){
+    this.autoplay()
   }
 }).mount('#app')
 
