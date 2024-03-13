@@ -62,11 +62,11 @@
 
                             <div class="my-thumbnails position-relative" >
                             <div
-                              class="my-thumbnail active "
+                              class="my-thumbnail "
                               @click="counter= indice"
                               
                               v-for="(thumb,indice) in images"
-                              :class="{'active': indice === counter}" >
+                              :class="{'active': counter ===indice }" >
                                 <img class="img-fluid" :src="thumb.url" alt="Thumbnail of Svezia picture">
                             </div>
 
